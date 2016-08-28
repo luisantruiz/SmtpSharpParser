@@ -6,7 +6,9 @@ using System.Net.Mail;
 namespace StmpSharpParser
 {
     /// <summary>
-    /// SmtpSharpParser main use is to parse a smtp 
+    /// SmtpSharpParser main use is to parse a string into a SmtpSection variable.
+    /// Instead of reading it from web.config, app.config, ServiceConfiguration.*.cscfg
+    /// you can get the smtp configuration from a string, like a connection string.
     /// </summary>
     public static class SmtpSharpParser
     {
