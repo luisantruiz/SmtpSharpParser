@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Net.Configuration;
 using System.Net.Mail;
 
-namespace StmpSharpParser
+namespace SmtpSharpParser
 {
     /// <summary>
     /// SmtpSharpParser main use is to parse a string into a SmtpSection variable.
@@ -21,39 +21,39 @@ namespace StmpSharpParser
         /// <returns></returns>
         public static SmtpSection Parse(string settingValue)
         {
-            ParseSetting(settingValue);
+            ParseSettingValue(settingValue);
 
             var smtpSection = new SmtpSection();
-            smtpSection.From = GetValueByKey("from");
-            smtpSection.DeliveryMethod = (SmtpDeliveryMethod)Enum.Parse(typeof(SmtpDeliveryMethod), GetValueByKey("deliveryMethod"), true);
-            smtpSection.Network.Host = GetValueByKey("host");
-            if (KeyExists("port"))
+            smtpSection.From = GetValueAssociatedWithTheKey("from");
+            smtpSection.DeliveryMethod = (SmtpDeliveryMethod)Enum.Parse(typeof(SmtpDeliveryMethod), GetValueAssociatedWithTheKey("deliveryMethod"), true);
+            smtpSection.Network.Host = GetValueAssociatedWithTheKey("host");
+            if (ContainsKey("port"))
             {
-                smtpSection.Network.Port = int.Parse(GetValueByKey("port"));
+                smtpSection.Network.Port = int.Parse(GetValueAssociatedWithTheKey("port"));
             }
-            if (KeyExists("userName"))
+            if (ContainsKey("userName"))
             {
-                smtpSection.Network.UserName = GetValueByKey("userName");
+                smtpSection.Network.UserName = GetValueAssociatedWithTheKey("userName");
             }
-            if (KeyExists("password"))
+            if (ContainsKey("password"))
             {
-                smtpSection.Network.Password = GetValueByKey("password");
+                smtpSection.Network.Password = GetValueAssociatedWithTheKey("password");
             }
-            if (KeyExists("enableSsl"))
+            if (ContainsKey("enableSsl"))
             {
-                smtpSection.Network.EnableSsl = bool.Parse(GetValueByKey("enableSsl"));
+                smtpSection.Network.EnableSsl = bool.Parse(GetValueAssociatedWithTheKey("enableSsl"));
             }
-            if (KeyExists("defaultCredentials"))
+            if (ContainsKey("defaultCredentials"))
             {
-                smtpSection.Network.DefaultCredentials = bool.Parse(GetValueByKey("defaultCredentials"));
+                smtpSection.Network.DefaultCredentials = bool.Parse(GetValueAssociatedWithTheKey("defaultCredentials"));
             }
-            if (KeyExists("clientDomain"))
+            if (ContainsKey("clientDomain"))
             {
-                smtpSection.Network.ClientDomain = GetValueByKey("clientDomain");
+                smtpSection.Network.ClientDomain = GetValueAssociatedWithTheKey("clientDomain");
             }
-            if (KeyExists("deliveryFormat"))
+            if (ContainsKey("deliveryFormat"))
             {
-                smtpSection.DeliveryFormat = (SmtpDeliveryFormat)Enum.Parse(typeof(SmtpDeliveryFormat), GetValueByKey("deliveryFormat"), true);
+                smtpSection.DeliveryFormat = (SmtpDeliveryFormat)Enum.Parse(typeof(SmtpDeliveryFormat), GetValueAssociatedWithTheKey("deliveryFormat"), true);
             }
 
             return smtpSection;
@@ -63,7 +63,7 @@ namespace StmpSharpParser
         /// Parse a string into a dictionary, key=value;key1=value;
         /// </summary>
         /// <param name="value">Value</param>
-        private static void ParseSetting(string value)
+        private static void ParseSettingValue(string value)
         {
             var settingsDictionary = value.Split(new[] { ';' });
             _dictionary = new Dictionary<string, string>();
@@ -79,10 +79,10 @@ namespace StmpSharpParser
         /// </summary>
         /// <param name="key">Key</param>
         /// <returns></returns>
-        private static string GetValueByKey(string key)
+        private static string GetValueAssociatedWithTheKey(string key)
         {
             string value = null;
-            if (KeyExists(key))
+            if (ContainsKey(key))
             {
                 value = _dictionary[key.ToLower()];
             }
@@ -94,7 +94,7 @@ namespace StmpSharpParser
         /// </summary>
         /// <param name="key">Key</param>
         /// <returns></returns>
-        private static bool KeyExists(string key)
+        private static bool ContainsKey(string key)
         {
             return _dictionary.ContainsKey(key.ToLower());
         }
