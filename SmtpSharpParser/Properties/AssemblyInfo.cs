@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("StmpSharpParser")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SmtpSharpParser main use is to parse a string into a SmtpSection variable. Instead of reading it from web.config, app.config, ServiceConfiguration.*.cscfg you can get the smtp configuration from a string, like a connection string.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("luisantruiz")]
 [assembly: AssemblyProduct("StmpSharpParser")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]

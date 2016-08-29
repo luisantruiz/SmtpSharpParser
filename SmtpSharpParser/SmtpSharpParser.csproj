@@ -7,8 +7,8 @@
     <ProjectGuid>{6BD56136-14A7-431D-9643-0B4B9BD54080}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StmpSharpParser</RootNamespace>
-    <AssemblyName>StmpSharpParser</AssemblyName>
+    <RootNamespace>SmtpSharpParser</RootNamespace>
+    <AssemblyName>SmtpSharpParser</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -35,12 +35,22 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SmtpSharpParserIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SmtpSharpParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="nuget.exe" />
+    <Content Include="SmtpSharpParserIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SmtpSharpParser.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

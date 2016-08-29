@@ -7,14 +7,13 @@
     <owners>luisantruiz</owners>
     <licenseUrl>https://github.com/luisantruiz/SmtpSharpParser/license</licenseUrl>
     <projectUrl>https://github.com/luisantruiz/SmtpSharpParser</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/luisantruiz/SmtpSharpParser/master/SmtpSharpParserIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Package description</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>SmtpSharpParser main use is to parse a string into a SmtpSection variable. Instead of reading it from web.config, app.config, ServiceConfiguration.*.cscfg you can get the smtp configuration from a string, like a connection string.</description>
+    <releaseNotes>Initial Functionality</releaseNotes>
     <copyright>Copyright 2016</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>smtp, parser, converter, convert, parse, smtpsection, smtp section</tags>
     <dependencies>
-      <dependency id="SampleDependency" version="1.0" />
     </dependencies>
   </metadata>
 </package>

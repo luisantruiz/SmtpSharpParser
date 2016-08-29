@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/luisantruiz/SmtpSharpParser</licenseUrl>
+    <projectUrl>https://github.com/luisantruiz/SmtpSharpParser</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/luisantruiz/SmtpSharpParser/master/SmtpSharpParserIcon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>smtp, parser, converter, convert, parse, smtpsection, smtp section</tags>
+  </metadata>
+</package>
