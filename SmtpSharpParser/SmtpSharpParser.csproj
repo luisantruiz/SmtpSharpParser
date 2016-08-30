@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\SmtpSharpParser.dll" />
     <Content Include="nuget.exe" />
     <Content Include="SmtpSharpParserIcon.ico" />
   </ItemGroup>
