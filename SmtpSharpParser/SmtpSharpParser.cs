@@ -12,7 +12,25 @@ namespace SmtpSharpParser
     /// </summary>
     public static class SmtpSharpParser
     {
+        #region Private Members Variables
+
         private static Dictionary<string, string> _dictionary;
+        private static SmtpSection _smtpSection;
+        private static string _settingValue;
+        private static char _splitCharacter = ';';
+
+        #endregion
+
+        #region Constructors
+
+        static SmtpSharpParser()
+        {
+            _smtpSection = new SmtpSection();
+        }
+
+        #endregion
+
+        #region Public Members
 
         /// <summary>
         /// Parses a string into a SmtpSection instance.
@@ -21,42 +39,82 @@ namespace SmtpSharpParser
         /// <returns></returns>
         public static SmtpSection Parse(string settingValue)
         {
-            ParseSettingValue(settingValue);
+            _settingValue = settingValue;
+            Parse();
 
-            var smtpSection = new SmtpSection();
-            smtpSection.From = GetValueAssociatedWithTheKey("from");
-            smtpSection.DeliveryMethod = (SmtpDeliveryMethod)Enum.Parse(typeof(SmtpDeliveryMethod), GetValueAssociatedWithTheKey("deliveryMethod"), true);
-            smtpSection.Network.Host = GetValueAssociatedWithTheKey("host");
+            return _smtpSection;
+        }
+
+        /// <summary>
+        /// Parses a string into a SmtpSection instance with a custom values separator.
+        /// </summary>
+        /// <param name="settingName">Configuration setting</param>
+        /// <returns></returns>
+        public static SmtpSection Parse(string settingValue, string splitCharacter)
+        {
+            _settingValue = settingValue;
+            _splitCharacter = Char.Parse(splitCharacter);
+            Parse();
+
+            return _smtpSection;
+        }
+
+        /// <summary>
+        /// Parses a string into a SmtpSection instance with a custom values separator.
+        /// </summary>
+        /// <param name="settingName">Configuration setting</param>
+        /// <returns></returns>
+        public static SmtpSection Parse(string settingValue, char splitCharacter)
+        {
+            _settingValue = settingValue;
+            _splitCharacter = splitCharacter;
+            Parse();
+
+            return _smtpSection;
+        }
+
+        #endregion
+
+        #region Internal Methods
+
+        /// <summary>
+        /// Internal method to parse the string into a SmtpSection instance
+        /// </summary>
+        private static void Parse()
+        {
+            ParseSettingValue(_settingValue);
+
+            _smtpSection.From = GetValueAssociatedWithTheKey("from");
+            _smtpSection.DeliveryMethod = (SmtpDeliveryMethod)Enum.Parse(typeof(SmtpDeliveryMethod), GetValueAssociatedWithTheKey("deliveryMethod"), true);
+            _smtpSection.Network.Host = GetValueAssociatedWithTheKey("host");
             if (ContainsKey("port"))
             {
-                smtpSection.Network.Port = int.Parse(GetValueAssociatedWithTheKey("port"));
+                _smtpSection.Network.Port = int.Parse(GetValueAssociatedWithTheKey("port"));
             }
             if (ContainsKey("userName"))
             {
-                smtpSection.Network.UserName = GetValueAssociatedWithTheKey("userName");
+                _smtpSection.Network.UserName = GetValueAssociatedWithTheKey("userName");
             }
             if (ContainsKey("password"))
             {
-                smtpSection.Network.Password = GetValueAssociatedWithTheKey("password");
+                _smtpSection.Network.Password = GetValueAssociatedWithTheKey("password");
             }
             if (ContainsKey("enableSsl"))
             {
-                smtpSection.Network.EnableSsl = bool.Parse(GetValueAssociatedWithTheKey("enableSsl"));
+                _smtpSection.Network.EnableSsl = bool.Parse(GetValueAssociatedWithTheKey("enableSsl"));
             }
             if (ContainsKey("defaultCredentials"))
             {
-                smtpSection.Network.DefaultCredentials = bool.Parse(GetValueAssociatedWithTheKey("defaultCredentials"));
+                _smtpSection.Network.DefaultCredentials = bool.Parse(GetValueAssociatedWithTheKey("defaultCredentials"));
             }
             if (ContainsKey("clientDomain"))
             {
-                smtpSection.Network.ClientDomain = GetValueAssociatedWithTheKey("clientDomain");
+                _smtpSection.Network.ClientDomain = GetValueAssociatedWithTheKey("clientDomain");
             }
             if (ContainsKey("deliveryFormat"))
             {
-                smtpSection.DeliveryFormat = (SmtpDeliveryFormat)Enum.Parse(typeof(SmtpDeliveryFormat), GetValueAssociatedWithTheKey("deliveryFormat"), true);
+                _smtpSection.DeliveryFormat = (SmtpDeliveryFormat)Enum.Parse(typeof(SmtpDeliveryFormat), GetValueAssociatedWithTheKey("deliveryFormat"), true);
             }
-
-            return smtpSection;
         }
 
         /// <summary>
@@ -65,7 +123,7 @@ namespace SmtpSharpParser
         /// <param name="value">Value</param>
         private static void ParseSettingValue(string value)
         {
-            var settingsDictionary = value.Split(new[] { ';' });
+            var settingsDictionary = value.Split(new[] { _splitCharacter }, StringSplitOptions.RemoveEmptyEntries);
             _dictionary = new Dictionary<string, string>();
             foreach (var setting in settingsDictionary)
             {
@@ -98,5 +156,7 @@ namespace SmtpSharpParser
         {
             return _dictionary.ContainsKey(key.ToLower());
         }
+
+        #endregion
     }
 }

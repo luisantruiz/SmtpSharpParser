@@ -3,11 +3,25 @@ SmtpSharpParser main use is to parse a string into a SmtpSection variable. Inste
 
 ## Installation
 
-TODO: Describe the installation process
+1. Open the Nuget Package Manager Console
+2. Install-Package SmtpSharpParser
+3. Or from the Nuget Package Manager search for SmtpSharpParser and install it from there
 
 ## Usage
 
-TODO: Write usage instructions
+Example #1:
+```javascript
+var values = "from=emailaddress@smtp.com;userName=user@smtp.com;password=password;deliveryMethod=Network;deliveryFormat=SevenBit;"
+                + "host=mail.smtp.com;enableSsl=true;port=25;defaultCredentials=true;";
+var smtpSection = SmtpSharpParser.Parse(values);
+```
+
+Example #2:
+```javascript
+var values = "from=emailaddress@smtp.com,userName=user@smtp.com,password=password,deliveryMethod=Network,deliveryFormat=SevenBit,"
+                + "host=mail.smtp.com,enableSsl=true,port=25,defaultCredentials=true,";
+var smtpSection = SmtpSharpParser.Parse(values, ",");
+```
 
 ## Contributing
 

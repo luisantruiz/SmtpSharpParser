@@ -39,6 +39,10 @@
     <ApplicationIcon>SmtpSharpParserIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SmtpSharpParser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SmtpSharpParser.1.0.0\lib\SmtpSharpParser.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +55,7 @@
     <Content Include="SmtpSharpParserIcon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="SmtpSharpParser.nuspec" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
