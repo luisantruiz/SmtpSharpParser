@@ -2,16 +2,16 @@
 <package >
   <metadata>
     <id>SmtpSharpParser</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>SmtpSharpParser</title>
-    <authors>luisantruiz</authors>
-    <owners>luisantruiz</owners>
-    <licenseUrl>https://github.com/luisantruiz/SmtpSharpParser</licenseUrl>
+    <authors>https://github.com/luisantruiz</authors>
+    <owners>https://github.com/luisantruiz</owners>
+    <licenseUrl>https://raw.githubusercontent.com/luisantruiz/SmtpSharpParser/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/luisantruiz/SmtpSharpParser</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/luisantruiz/SmtpSharpParser/master/SmtpSharpParserIcon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SmtpSharpParser main use is to parse a string into a SmtpSection variable. Instead of reading it from web.config, app.config, ServiceConfiguration.*.cscfg you can get the smtp configuration from a string, like a connection string.</description>
-    <releaseNotes>Initial Configuration</releaseNotes>
+    <releaseNotes>Added a custom split separator, functionality improvements</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>smtp, parser, converter, convert, parse, smtpsection, smtp section</tags>
   </metadata>
